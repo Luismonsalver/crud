@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Luis Monsalve">
+    <meta name="description" content="Pagina para la actividad 4.1 de Front End">
+    <title>CRUD</title>
+    <link rel="shortcut icon" href="media/github.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Football Team Manager</h1>
+        </header>
+        <section id="playerList">
+
+
+
+        </section>
+        <section id="playerForm">
+            <form>
+
+                <input type="text" id="playerName" required>
+                <input type="text" id="playerLastname" required>
+                <input type="number" id="playerNumber" min="1" max="99" pattern="[1-9]{1,2}|99" required>
+
+                <select id="playerPosition" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="striker">Delantero</option>
+                    <option value="midfielder">Mediocampo</option>
+                    <option value="defender">Defensa</option>
+                    <option value="goalkeeper">Portero</option>
+                </select>
+                
+                <button>Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FUNCIONES A EJECUTAR -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>
