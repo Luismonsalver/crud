@@ -4,8 +4,11 @@ const addPlayerList = document.querySelector("#addPlayerList")
 
 let arrayPlayers = [];
 let currentUpdateDiv = null;
+
 let errorMessage = null;
+let errorMessageExist = null;
 let updateErrorMessage = null;
+let updateErrorMessageExist = null;
 
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -14,6 +17,8 @@ playerForm.addEventListener("submit", (e) => {
     const playerLastname = document.querySelector("#playerLastname").value
     const playerNumber = document.querySelector("#playerNumber").value
     const playerPosition = document.querySelector("#playerPosition").value
+
+    const existPlayerNumber = arrayPlayers.find((player => (player.Number === `${playerNumber}`)))
 
     if (!playerName || !playerLastname || !playerNumber || !playerPosition) {
         if (!errorMessage) {
@@ -27,6 +32,21 @@ playerForm.addEventListener("submit", (e) => {
         if (errorMessage) {
             errorMessage.remove();
             errorMessage = null;
+        }
+    }
+
+    if (existPlayerNumber){
+        if (!errorMessageExist) {
+            errorMessageExist = document.createElement("p");
+            errorMessageExist.id = "errorMessage";
+            errorMessageExist.textContent = "Ya existe un jugador con ese número.";
+            playerForm.appendChild(errorMessageExist);
+        }
+        return;
+    } else {
+        if (errorMessageExist) {
+        errorMessageExist.remove();
+        errorMessageExist = null;
         }
     }
 
@@ -94,10 +114,8 @@ const playerRead = () => {
     } 
 };
 
-
 const deletePlayer = (event) => {
     let index = event.target.getAttribute("data-id");
-    console.log(index);
 
     arrayPlayers = JSON.parse(localStorage.getItem("squad")) || [];
 
@@ -143,6 +161,8 @@ const updatePlayer = (event) => {
     const confirmButton = document.querySelector("#confirmButton");
     confirmButton.addEventListener("click", () => {
         
+        const existPlayerNumberUpdate = arrayPlayers.find((player => (player.Number === `${updateNumber.value}`)))
+
         if (!updateName.value || !updateLastname.value || !updateNumber.value || !updatePosition.value) {
             if (!updateErrorMessage) {
                 updateErrorMessage = document.createElement("p");
@@ -157,6 +177,24 @@ const updatePlayer = (event) => {
                 updateErrorMessage = null;
             }
         }
+
+        if (arrayPlayers[index].Number !== `${updateNumber.value}`) {
+            if (existPlayerNumberUpdate){
+                if (!updateErrorMessageExist) {
+                    updateErrorMessageExist = document.createElement("p");
+                    updateErrorMessageExist.id = "errorMessage";
+                    updateErrorMessageExist.textContent = "Ya existe un jugador con ese número.";
+                    updateDiv.appendChild(updateErrorMessageExist);
+                }
+                return;
+            } else {
+                if (updateErrorMessageExist) {
+                updateErrorMessageExist.remove();
+                updateErrorMessageExist = null;
+                }
+            }
+        }
+        
 
         playerToUpdate.Name = updateName.value;
         playerToUpdate.LastName = updateLastname.value;
