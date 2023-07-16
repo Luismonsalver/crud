@@ -1,7 +1,8 @@
 const playerList = document.querySelector("#playerList")
 const playerForm = document.querySelector("#playerForm")
 
-let arrayPlayers = []
+let arrayPlayers = [];
+let currentUpdateDiv = null;
 
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -85,6 +86,10 @@ const updatePlayer = (event) => {
     const playerContainer = document.querySelector(`.playerContainer[data-id="${index}"]`);
     const updateDiv = playerContainer.querySelector("#update");
 
+    if (currentUpdateDiv) {
+        currentUpdateDiv.innerHTML = "";
+    }
+
     updateDiv.innerHTML= `
         <input type="text" id="updateName" value = ${playerToUpdate.Name}>
         <input type="text" id="updateLastname" value = ${playerToUpdate.LastName}>
@@ -92,23 +97,25 @@ const updatePlayer = (event) => {
         <button id="confirmButton">Confirmar</button>
     `
 
+    currentUpdateDiv = updateDiv;
+
     const updateName = document.querySelector("#updateName");
     const updateLastname = document.querySelector("#updateLastname");
     const updateNumber = document.querySelector("#updateNumber");
 
     const confirmButton = document.querySelector("#confirmButton");
     confirmButton.addEventListener("click", () => {
-        // Actualizar los valores del jugador con los nuevos valores ingresados
+        
         playerToUpdate.Name = updateName.value;
         playerToUpdate.LastName = updateLastname.value;
         playerToUpdate.Number = updateNumber.value;
-
-        // Volver a guardar los datos actualizados en LocalStorage
+ 
         localStorage.setItem("squad", JSON.stringify(arrayPlayers));
 
-        // Limpiar el div de actualización y volver a mostrar la lista de jugadores
         updateDiv.innerHTML = "";
         playerRead();
+
+        currentUpdateDiv = null;
     });
 }
 
