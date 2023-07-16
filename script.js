@@ -33,15 +33,19 @@ const playerCreate = () => {
 }
 
 const playerRead = () => {
-    playerList.innerHTML="";
+    playerList.innerHTML = "";
 
     arrayPlayers = JSON.parse(localStorage.getItem("squad"));
 
-    if (arrayPlayers === null){
+    if (arrayPlayers === null) {
         arrayPlayers = [];
     } else {
         arrayPlayers.forEach((player, index) => {
-            playerList.innerHTML += `
+            const playerContainer = document.createElement("div");
+            playerContainer.classList.add("playerContainer");
+            playerContainer.setAttribute("data-id", index)
+
+            playerContainer.innerHTML = `
                 <div class="playerCard">
                     <p>Nombre: ${player.Name}</p>
                     <p>Apellido: ${player.LastName}</p>
@@ -53,10 +57,13 @@ const playerRead = () => {
                 <div id="update">
                 
                 </div>
-            `
+            `;
+
+            playerList.appendChild(playerContainer);
         });
     }
-}
+};
+
 
 const deletePlayer = (event) => {
     let index = event.target.getAttribute("data-id");
@@ -75,7 +82,8 @@ const updatePlayer = (event) => {
     const index = event.target.getAttribute("data-id");
     const playerToUpdate = arrayPlayers[index];
 
-    const updateDiv = document.querySelector("#update");
+    const playerContainer = document.querySelector(`.playerContainer[data-id="${index}"]`);
+    const updateDiv = playerContainer.querySelector("#update");
 
     updateDiv.innerHTML= `
         <input type="text" id="updateName" value = ${playerToUpdate.Name}>
@@ -104,7 +112,4 @@ const updatePlayer = (event) => {
     });
 }
 
-document.addEventListener("DOMContentLoaded", playerRead)
-
-
-  
+document.addEventListener("DOMContentLoaded", playerRead); 
