@@ -40,22 +40,33 @@ const playerRead = () => {
     if (arrayPlayers === null){
         arrayPlayers = [];
     } else {
-        arrayPlayers.forEach(player => {
+        arrayPlayers.forEach((player, index) => {
             playerList.innerHTML += `
                 <div class="playerCard">
                     <p>Nombre: ${player.Name}</p>
-                    <p>Nombre: ${player.LastName}</p>
-                    <p>Nombre: ${player.Number}</p>
-                    <p>Nombre: ${player.Position}</p>
+                    <p>Apellido: ${player.LastName}</p>
+                    <p>Dorsal: ${player.Number}</p>
+                    <p>Posición: ${player.Position}</p>
 
-                    <span class="delete">Borrar</span>
+                    <button data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
                 </div>
             `
         });
     }
 }
 
-document.addEventListener("DOMContentLoaded", playerRead())
+document.addEventListener("DOMContentLoaded", playerRead)
 
+const deletePlayer = (event) => {
+    let index = event.target.getAttribute("data-id");
+    console.log(index);
 
+    arrayPlayers = JSON.parse(localStorage.getItem("squad")) || [];
 
+    arrayPlayers.splice(index, 1);
+
+    console.log(arrayPlayers);
+
+    playerCreate();
+}
+  
