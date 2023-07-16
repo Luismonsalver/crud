@@ -1,7 +1,7 @@
 const playerList = document.querySelector("#playerList")
 const playerForm = document.querySelector("#playerForm")
 
-const arrayPlayers = []
+let arrayPlayers = []
 
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -24,14 +24,38 @@ playerForm.addEventListener("submit", (e) => {
 
     playerForm.reset()
 
-    playerPost()
+    playerCreate()
 })
 
-const playerPost = () => {
-    localStorage.setItem('squad', JSON.stringify(arrayPlayers))
+const playerCreate = () => {
+    localStorage.setItem('squad', JSON.stringify(arrayPlayers));
+    playerRead();
 }
 
+const playerRead = () => {
+    playerList.innerHTML="";
 
+    arrayPlayers = JSON.parse(localStorage.getItem("squad"));
+
+    if (arrayPlayers === null){
+        arrayPlayers = [];
+    } else {
+        arrayPlayers.forEach(player => {
+            playerList.innerHTML += `
+                <div class="playerCard">
+                    <p>Nombre: ${player.Name}</p>
+                    <p>Nombre: ${player.LastName}</p>
+                    <p>Nombre: ${player.Number}</p>
+                    <p>Nombre: ${player.Position}</p>
+
+                    <span class="delete">Borrar</span>
+                </div>
+            `
+        });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", playerRead())
 
 
 
