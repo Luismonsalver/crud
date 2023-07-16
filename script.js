@@ -4,6 +4,8 @@ const addPlayerList = document.querySelector("#addPlayerList")
 
 let arrayPlayers = [];
 let currentUpdateDiv = null;
+let errorMessage = null;
+let updateErrorMessage = null;
 
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -13,6 +15,21 @@ playerForm.addEventListener("submit", (e) => {
     const playerNumber = document.querySelector("#playerNumber").value
     const playerPosition = document.querySelector("#playerPosition").value
 
+    if (!playerName || !playerLastname || !playerNumber || !playerPosition) {
+        if (!errorMessage) {
+            errorMessage = document.createElement("p");
+            errorMessage.id = "errorMessage";
+            errorMessage.textContent = "Todos los campos deben ser rellenados para agregar un jugador.";
+            playerForm.appendChild(errorMessage);
+        }
+        return;
+    } else {
+        if (errorMessage) {
+            errorMessage.remove();
+            errorMessage = null;
+        }
+    }
+
     const player = {
         Name: playerName,
         LastName: playerLastname,
@@ -20,7 +37,7 @@ playerForm.addEventListener("submit", (e) => {
         Position: playerPosition
     }
 
-    if (arrayPlayers.length < 23){
+    if (arrayPlayers.length < 11){
 
     arrayPlayers.push(player)
 
@@ -126,6 +143,21 @@ const updatePlayer = (event) => {
     const confirmButton = document.querySelector("#confirmButton");
     confirmButton.addEventListener("click", () => {
         
+        if (!updateName.value || !updateLastname.value || !updateNumber.value || !updatePosition.value) {
+            if (!updateErrorMessage) {
+                updateErrorMessage = document.createElement("p");
+                updateErrorMessage.id = "updateErrorMessage";
+                updateErrorMessage.textContent = "Todos los campos deben ser rellenados para modificar un jugador.";
+                updateDiv.appendChild(updateErrorMessage);
+            }
+            return;
+        } else {
+            if (updateErrorMessage) {
+                updateErrorMessage.remove();
+                updateErrorMessage = null;
+            }
+        }
+
         playerToUpdate.Name = updateName.value;
         playerToUpdate.LastName = updateLastname.value;
         playerToUpdate.Number = updateNumber.value;
