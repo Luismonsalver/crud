@@ -7,7 +7,7 @@
     <meta name="author" content="Luis Monsalve">
     <meta name="description" content="Pagina para la actividad 4.1 de Front End">
     <title>CRUD</title>
-    <link rel="shortcut icon" href="media/github.png">
+    <link rel="shortcut icon" href="media/footballfield.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,22 +20,27 @@
 
 
         </section>
-        <section id="playerForm">
-            <form>
+        <section id="addPlayerList">
+            <form id="playerForm">
 
-                <input type="text" id="playerName" required>
-                <input type="text" id="playerLastname" required>
-                <input type="number" id="playerNumber" min="1" max="99" pattern="[1-9]{1,2}|99" required>
+                <label for="playerName">Nombre</label>
+                <input type="text" id="playerName" name="Name">
 
-                <select id="playerPosition" required>
+                <label for="playerLastname">Apellido</label>
+                <input type="text" id="playerLastname" name="LastName">
+
+                <label for="playerNumber">Dorsal</label>
+                <input type="number" id="playerNumber" name="Number" min="1" max="99" pattern="[1-9]{1,2}|99">
+
+                <select id="playerPosition" name="Position">
                     <option value="">Seleccione una opción</option>
-                    <option value="striker">Delantero</option>
-                    <option value="midfielder">Mediocampo</option>
-                    <option value="defender">Defensa</option>
-                    <option value="goalkeeper">Portero</option>
+                    <option value="Delantero">Delantero</option>
+                    <option value="Mediocampo">Mediocampo</option>
+                    <option value="Defensa">Defensa</option>
+                    <option value="Portero">Portero</option>
                 </select>
-                
-                <button>Enviar</button>
+
+                <button type="submit">Enviar</button>
             </form>
         </section>
     </main>
