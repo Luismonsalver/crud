@@ -1,7 +1,7 @@
 const playerList = document.querySelector("#playerList")
 const playerForm = document.querySelector("#playerForm")
 
-const players = []
+const arrayPlayers = []
 
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -18,10 +18,18 @@ playerForm.addEventListener("submit", (e) => {
         Position: playerPosition
     }
 
-    players.push(player)
+    arrayPlayers.push(player)
 
-    console.log(players)
+    console.log(arrayPlayers)
+
+    playerForm.reset()
+
+    playerPost()
 })
+
+const playerPost = () => {
+    localStorage.setItem('squad', JSON.stringify(arrayPlayers))
+}
 
 
 
