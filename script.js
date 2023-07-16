@@ -99,8 +99,8 @@ const playerRead = () => {
                 <div class="playerCard">
                     <p>Nombre: ${player.Name}</p>
                     <p>Apellido: ${player.LastName}</p>
-                    <p>Dorsal: ${player.Number}</p>
                     <p>Posición: ${player.Position}</p>
+                    <p>Dorsal: ${player.Number}</p>
                 </div>
                 <button data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
                 <button data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
@@ -115,15 +115,20 @@ const playerRead = () => {
 };
 
 const deletePlayer = (event) => {
-    let index = event.target.getAttribute("data-id");
 
-    arrayPlayers = JSON.parse(localStorage.getItem("squad")) || [];
+    const confirmacion = window.confirm("¿Estás seguro de que deseas borrar este jugador?");
 
-    arrayPlayers.splice(index, 1);
+    if (confirmacion) {
+        let index = event.target.getAttribute("data-id");
 
-    console.log(arrayPlayers);
+        arrayPlayers = JSON.parse(localStorage.getItem("squad")) || [];
 
-    playerCreate();
+        arrayPlayers.splice(index, 1);
+
+        console.log(arrayPlayers);
+
+        playerCreate();
+    };
 };
 
 const updatePlayer = (event) => {
