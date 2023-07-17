@@ -110,9 +110,6 @@ const playerRead = () => {
                     <button class="updateButton" data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
                     <button class="deleteButton" data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
                 </div>
-                <div id="update">
-                
-                </div>
             `;
 
             playerList.appendChild(playerContainer);
@@ -142,12 +139,13 @@ const updatePlayer = (event) => {
     const playerToUpdate = arrayPlayers[index];
 
     const playerContainer = document.querySelector(`.playerContainer[data-id="${index}"]`);
-    const updateDiv = playerContainer.querySelector("#update");
 
     if (currentUpdateDiv) {
-        currentUpdateDiv.innerHTML = "";
+        return;
     }
 
+    updateDiv = document.createElement("div")
+    updateDiv.id="update"
     updateDiv.innerHTML= `
         <p>Nombre: </p><input type="text" id="updateName" value = ${playerToUpdate.Name}>
         <input type="text" id="updateLastname" value = ${playerToUpdate.LastName}>
@@ -161,6 +159,7 @@ const updatePlayer = (event) => {
         </select>
         <button id="confirmButton">Confirmar</button>
     `
+    playerContainer.appendChild(updateDiv)
 
     currentUpdateDiv = updateDiv;
 
