@@ -147,10 +147,10 @@ const updatePlayer = (event) => {
     updateDiv = document.createElement("div")
     updateDiv.id="update"
     updateDiv.innerHTML= `
-        <p>Nombre: </p><input type="text" id="updateName" value = ${playerToUpdate.Name}>
-        <input type="text" id="updateLastname" value = ${playerToUpdate.LastName}>
-        <input type="number" id="updateNumber" min="1" max="99" pattern="[1-9]{1,2}|99" value = ${playerToUpdate.Number}>
-        <select id="updatePosition">
+        <p>Nombre</p><input type="text" id="updateName" value = ${playerToUpdate.Name}>
+        <p>Apellido</p><input type="text" id="updateLastname" value = ${playerToUpdate.LastName}>
+        <p>Dorsal</p><input type="number" id="updateNumber" min="1" max="99" pattern="[1-9]{1,2}|99" value = ${playerToUpdate.Number}>
+        <p>Posición</p><select id="updatePosition">
             <option value="${playerToUpdate.Position}">Mantener posición</option>
             <option value="Delantero">Delantero</option>
             <option value="Mediocampo">Mediocampo</option>
