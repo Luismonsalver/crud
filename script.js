@@ -10,6 +10,7 @@ let errorMessage = null;
 let errorMessageExist = null;
 let updateErrorMessage = null;
 let updateErrorMessageExist = null;
+let playersLimitMessage = null;
 
 // FUNCION DE FORMULARIO QUE SE LLAMA CUANDO SE PRESIONA EL BOTON DE AGREGAR
 playerForm.addEventListener("submit", (e) => {
@@ -59,22 +60,26 @@ playerForm.addEventListener("submit", (e) => {
         Position: playerPosition
     }
 
-    if (arrayPlayers.length < 4){
+    if (arrayPlayers.length < 3){
 
     arrayPlayers.push(player)
-
-    console.log(arrayPlayers)
 
     playerForm.reset()
 
     playerCreate()
+
+    if (playersLimitMessage) {
+        playersLimitMessage.remove();
+        playersLimitMessage = null;
+        }
+
     } else {
-        const playersLimitMessage = document.querySelector("#playersLimitMessage");
         if (!playersLimitMessage) {
-            const playersLimit = document.createElement("p");
-            playersLimit.id = "errorMessage";
-            playersLimit.innerHTML = `Has llegado al límite de jugadores, elimina un jugador si quieres agregar otro.`;
-            playerForm.appendChild(playersLimit);
+            playersLimitMessage = document.createElement("p");
+            playersLimitMessage.id = "errorMessage";
+            playersLimitMessage.innerHTML = `Has llegado al límite de jugadores, elimina un jugador si quieres agregar otro.`;
+            playerForm.appendChild(playersLimitMessage);
+            return;
         }
     }   
 });
@@ -132,8 +137,6 @@ const deletePlayer = (event) => {
         arrayPlayers = JSON.parse(localStorage.getItem("squad")) || [];
 
         arrayPlayers.splice(index, 1);
-
-        console.log(arrayPlayers);
 
         playerCreate();
     };
@@ -211,7 +214,6 @@ const updatePlayer = (event) => {
             }
         }
         
-
         playerToUpdate.Name = updateName.value;
         playerToUpdate.LastName = updateLastname.value;
         playerToUpdate.Number = updateNumber.value;
