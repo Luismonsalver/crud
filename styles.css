@@ -3,12 +3,13 @@
     padding: 0;
 }
 
-/* ESTILOS MOMENTANEOS CAMBIAR DESPUES */
 body {
     background-color: #090d20;
     color: #ffffff;
     font-family: Arial;
 }
+
+/* CABECERA */
 
 h1 {
     padding: 20px;
@@ -17,11 +18,15 @@ h1 {
     background-color: #060815;
 }
 
+/* ESTILOS PARA LA PAGINA */
+
 .page {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
 }
+
+/* ESTILOS PARA MOSTRAR LOS JUGADORES */
 
 #playerList {
     display: flex;
@@ -34,6 +39,8 @@ h1 {
     flex-direction: column;
     gap: 10px;
 }
+
+/* ESTILOS PARA MODIFICAR LA CARTA DEL JUGADOR */
 
 .playerCard {
     display: flex;
@@ -54,7 +61,7 @@ h1 {
 
 .dataNames {
     display: flex;
-    gap: 5px;
+    gap: 7px;
     align-items: center;
 }
 
@@ -91,16 +98,36 @@ h1 {
 
 .number {
     font-size: 3.5rem;
+    color: #24c537;
 }
+
+/* ESTILOS PARA LOS BOTONES DE ACCIONES */
 
 .playerOptions {
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
+    margin-right: 5px;
 }
 
 .playerOptions button {
     width: fit-content;
+    padding: 5px 8px;
+    color: #ececec;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
 }
+
+.updateButton {
+    background-color: #3939a3;
+}
+
+.deleteButton {
+    background-color: #913838;
+}
+
+/* ESTILOS PARA EL FORMULARIO DE AGREGAR JUGADORES */
 
 #playerForm {
     display: flex;

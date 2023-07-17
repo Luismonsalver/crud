@@ -107,8 +107,8 @@ const playerRead = () => {
                     <p class="number">${player.Number}</p>
                 </div>
                 <div class="playerOptions">
-                    <button data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
-                    <button data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
+                    <button class="updateButton" data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
+                    <button class="deleteButton" data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
                 </div>
                 <div id="update">
                 
