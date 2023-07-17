@@ -5,11 +5,13 @@ const addPlayerList = document.querySelector("#addPlayerList")
 let arrayPlayers = [];
 let currentUpdateDiv = null;
 
+// VARIABLES PARA MENSAJES DE ERROR
 let errorMessage = null;
 let errorMessageExist = null;
 let updateErrorMessage = null;
 let updateErrorMessageExist = null;
 
+// FUNCION DE FORMULARIO QUE SE LLAMA CUANDO SE PRESIONA EL BOTON DE AGREGAR
 playerForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -57,7 +59,7 @@ playerForm.addEventListener("submit", (e) => {
         Position: playerPosition
     }
 
-    if (arrayPlayers.length < 11){
+    if (arrayPlayers.length < 4){
 
     arrayPlayers.push(player)
 
@@ -70,18 +72,20 @@ playerForm.addEventListener("submit", (e) => {
         const playersLimitMessage = document.querySelector("#playersLimitMessage");
         if (!playersLimitMessage) {
             const playersLimit = document.createElement("p");
-            playersLimit.id = "playersLimitMessage";
-            playersLimit.innerHTML = `Has llegado al límite de jugadores, elimina un jugador si quieres agregar otro`;
-            addPlayerList.appendChild(playersLimit);
+            playersLimit.id = "errorMessage";
+            playersLimit.innerHTML = `Has llegado al límite de jugadores, elimina un jugador si quieres agregar otro.`;
+            playerForm.appendChild(playersLimit);
         }
     }   
 });
 
+// FUNCION PARA AGREGAR UN JUGADOR
 const playerCreate = () => {
     localStorage.setItem('squad', JSON.stringify(arrayPlayers));
     playerRead();
 }
 
+// FUNCION PARA MOSTRAR LOS JUGADORES EN PANTALLA
 const playerRead = () => {
     playerList.innerHTML = "";
 
@@ -117,6 +121,7 @@ const playerRead = () => {
     } 
 };
 
+// FUNCION PARA BORRAR UN JUGADOR
 const deletePlayer = (event) => {
 
     const confirmacion = window.confirm("¿Estás seguro de que deseas borrar este jugador?");
@@ -134,6 +139,7 @@ const deletePlayer = (event) => {
     };
 };
 
+// FUNCION PARA ACTUALIZAR UN JUGADOR
 const updatePlayer = (event) => {
     const index = event.target.getAttribute("data-id");
     const playerToUpdate = arrayPlayers[index];
@@ -220,4 +226,5 @@ const updatePlayer = (event) => {
     });
 };
 
+// UNA VEZ QUE EL DOM HAYA CARGADO, MOSTRAR LOS JUGADORES
 document.addEventListener("DOMContentLoaded", playerRead); 
