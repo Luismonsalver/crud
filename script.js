@@ -60,7 +60,7 @@ playerForm.addEventListener("submit", (e) => {
         Position: playerPosition
     }
 
-    if (arrayPlayers.length < 3){
+    if (arrayPlayers.length < 11){
 
     arrayPlayers.push(player)
 
