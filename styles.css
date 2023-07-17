@@ -3,6 +3,106 @@
     padding: 0;
 }
 
+/* ESTILOS MOMENTANEOS CAMBIAR DESPUES */
+body {
+    background-color: #090d20;
+    color: #ffffff;
+    font-family: Arial;
+}
+
+h1 {
+    padding: 20px;
+    margin-bottom: 15px;
+    font: italic bold 2.7rem "Segoe UI";
+    background-color: #060815;
+}
+
 .page {
     display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+#playerList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.playerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px;
+    background-color: #171d38;
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px 3px #000000a6;
+}
+
+.playerData {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dataNames {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.name {
+    font-size: 2rem;
+}
+
+.lastname {
+    font-size: 2.3rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.Delantero, .Mediocampo, .Defensa, .Portero {
+    padding-right: 5px;
+    width: fit-content;
+}
+
+.Delantero {
+    border-right: 5px solid #5151ff;
+}
+
+.Mediocampo {
+    border-right: 5px solid #4ca84c;
+}
+
+.Defensa {
+    border-right: 5px solid #ff4545;
+}
+
+.Portero {
+    border-right: 5px solid #ffba3b;
+}
+
+.number {
+    font-size: 3.5rem;
+}
+
+.playerOptions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.playerOptions button {
+    width: fit-content;
+}
+
+#playerForm {
+    display: flex;
+    flex-direction: column;
 }

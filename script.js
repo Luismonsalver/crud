@@ -97,13 +97,19 @@ const playerRead = () => {
 
             playerContainer.innerHTML = `
                 <div class="playerCard">
-                    <p>Nombre: ${player.Name}</p>
-                    <p>Apellido: ${player.LastName}</p>
-                    <p>Posición: ${player.Position}</p>
-                    <p>Dorsal: ${player.Number}</p>
+                    <div class="playerData">
+                        <div class="dataNames">
+                            <p class="name">${player.Name}</p>
+                            <p class="lastname">${player.LastName}</p>
+                        </div>
+                        <p class="${player.Position}">${player.Position}</p>
+                    </div>
+                    <p class="number">${player.Number}</p>
                 </div>
-                <button data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
-                <button data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
+                <div class="playerOptions">
+                    <button data-id="${index}" onclick="updatePlayer(event)">Modificar</button>
+                    <button data-id="${index}" onclick="deletePlayer(event)">Borrar</button>
+                </div>
                 <div id="update">
                 
                 </div>
