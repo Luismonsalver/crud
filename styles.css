@@ -163,7 +163,7 @@ h1 {
     box-sizing: border-box;
     padding: 15px;
     width: fit-content;
-    background-color: #1f232c;
+    background-color: #1a1d28;
     margin: auto;
 }
 
@@ -183,6 +183,13 @@ h1 {
     background-color: #4f9657;
     font-weight: bold;
     width: fit-content;
+}
+
+#update #errorMessage {
+    font-size: 0.9rem;
+    width: 160px;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 
 /* ESTILOS PARA EL FORMULARIO DE AGREGAR JUGADORES */
@@ -245,3 +252,21 @@ h1 {
     margin-top: 15px;
     word-wrap: break-word;
 }
+
+/* ESTILOS DEPENDIENDO DE LA ANCHURA DE LA PANTALLA (MAX 900 PX) */
+
+@media (max-width: 900px) {
+
+h1 {
+    text-align: center;
+}
+
+.page {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+}
+
+}
+
+
