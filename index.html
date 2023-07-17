@@ -24,25 +24,31 @@
             <section id="addPlayerList">
                 <form id="playerForm">
 
+                    <p class="formTitle">AGREGA UN JUGADOR</p>
+
                     <label for="playerName">Nombre</label>
                     <input type="text" id="playerName" name="Name">
 
                     <label for="playerLastname">Apellido</label>
                     <input type="text" id="playerLastname" name="LastName">
 
-                    <label for="playerNumber">Dorsal</label>
-                    <input type="number" id="playerNumber" name="Number" min="1" max="99" pattern="[1-9]{1,2}|99">
-
-                    <label for="playerPosition">Posición</label>
-                    <select id="playerPosition" name="Position">
-                        <option value="">Seleccione una opción</option>
-                        <option value="Delantero">Delantero</option>
-                        <option value="Mediocampo">Mediocampo</option>
-                        <option value="Defensa">Defensa</option>
-                        <option value="Portero">Portero</option>
-                    </select>
-
-                    <button type="submit">Agregar</button>
+                    <div class="formOptions">
+                        <div class="formNumber">
+                            <label for="playerNumber">Dorsal</label>
+                            <input type="number" id="playerNumber" name="Number" min="1" max="99" pattern="[1-9]{1,2}|99">
+                        </div>
+                        <div class="formPosition">
+                            <label for="playerPosition">Posición</label>
+                            <select id="playerPosition" name="Position">
+                                <option value="">Seleccione una opción</option>
+                                <option value="Delantero">Delantero</option>
+                                <option value="Mediocampo">Mediocampo</option>
+                                <option value="Defensa">Defensa</option>
+                                <option value="Portero">Portero</option>
+                            </select>
+                        </div>  
+                    </div>
+                    <button class="formButton" type="submit">Agregar</button>
                 </form>
             </section>
         </div>

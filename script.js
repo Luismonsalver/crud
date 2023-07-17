@@ -149,7 +149,7 @@ const updatePlayer = (event) => {
     }
 
     updateDiv.innerHTML= `
-        <input type="text" id="updateName" value = ${playerToUpdate.Name}>
+        <p>Nombre: </p><input type="text" id="updateName" value = ${playerToUpdate.Name}>
         <input type="text" id="updateLastname" value = ${playerToUpdate.LastName}>
         <input type="number" id="updateNumber" min="1" max="99" pattern="[1-9]{1,2}|99" value = ${playerToUpdate.Number}>
         <select id="updatePosition">
@@ -177,7 +177,7 @@ const updatePlayer = (event) => {
         if (!updateName.value || !updateLastname.value || !updateNumber.value || !updatePosition.value) {
             if (!updateErrorMessage) {
                 updateErrorMessage = document.createElement("p");
-                updateErrorMessage.id = "updateErrorMessage";
+                updateErrorMessage.id = "errorMessage";
                 updateErrorMessage.textContent = "Todos los campos deben ser rellenados para modificar un jugador.";
                 updateDiv.appendChild(updateErrorMessage);
             }

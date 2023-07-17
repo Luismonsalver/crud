@@ -12,8 +12,8 @@ body {
 /* CABECERA */
 
 h1 {
-    padding: 20px;
-    margin-bottom: 15px;
+    padding: 20px 40px;
+    margin-bottom: 20px;
     font: italic bold 2.7rem "Segoe UI";
     background-color: #060815;
 }
@@ -22,7 +22,7 @@ h1 {
 
 .page {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 20px;
 }
 
@@ -127,9 +127,84 @@ h1 {
     background-color: #913838;
 }
 
+/* ESTILOS PARA EL CONTENEDOR DE MODIFICAR JUGADORES */
+
+#errorMessage {
+    color: #e02424;
+}
+
 /* ESTILOS PARA EL FORMULARIO DE AGREGAR JUGADORES */
 
 #playerForm {
     display: flex;
     flex-direction: column;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: #010311;
+    box-sizing: border-box;
+    width: 335px;
+    border: 5px solid #171d38;
+}
+
+#playerForm label {
+    margin-bottom: 5px;
+}
+
+#playerForm input, #playerForm select {
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+#playerForm input {
+    text-indent: 5px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    box-shadow: 0 0 5px #ffffff;
+    outline: none;
+  }
+
+select:focus{
+    outline: none;
+}
+
+.formTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.formOptions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formNumber, .formPosition {
+    display: flex;
+    flex-direction: column;
+}
+
+.formNumber{
+    width: 30%;
+}
+
+.formPosition {
+    width: 60%;
+}
+
+.formButton {
+    border: none;
+    border-radius: 3px;
+    padding: 10px 0;
+    color: #ffffff;
+    background-color: #4f9657;
+    font-weight: bold;
+}
+
+#playerForm #errorMessage {
+    margin-top: 15px;
+    word-wrap: break-word;
 }
